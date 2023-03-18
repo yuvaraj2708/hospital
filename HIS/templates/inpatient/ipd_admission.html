@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block content %}
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+
+<form action="updaterecord/{{ patients.id }}" method="post">
+  {% csrf_token %}
+  name:<br>
+  <input name="name" value="{{ patients.name }}">
+  <br><br>
+  age:<br>
+  <input name="age" value="{{ patients.age }}">
+  <br><br>
+  gender:<br>
+  <input name="gender" value="{{ patients.gender}}">
+  <br><br>
+  contact_info:<br>
+  <input name="contact_info" value="{{ patients.contact_info }}">
+  <br><br>
+  patient_type:<br>
+  <input name="patient_type" value="{{ patients.patient_type}}">
+  <br><br>
+  Date:<br>
+  <input name="Date" value="{{ patients.Date}}">
+  <br><br>
+
+  <input type="submit" value="Submit">
+  </form>
+  {% endblock %}

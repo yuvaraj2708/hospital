@@ -1,0 +1,95 @@
+{% extends "base.html" %}
+
+{% block content %}
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+<h1>Patient Details</h1>
+<table>
+  <tr>
+    <th>Patient Name</th>
+    <th>Patient Age</th>
+    <th>Patient Gender</th>
+    <th>Patient Contact</th>
+    <th>Patient Type</th>
+    <th>Date</th>
+  </tr>
+  {% for patient in patients %}
+  <tr>
+    <td>{{ patient.name }}</td>
+    <td>{{ patient.age }}</td>
+    <td>{{ patient.gender }}</td>
+    <td>{{ patient.contact_info }}</td>
+    <td><a href="{% url 'update' patient.id %}">{{ patient.patient_type }}</a></td>
+    <td>{{ patient.Date }}</td>
+  </tr>
+  {% endfor %}
+</table>
+
+<h1>Appointments</h1>
+<table>
+  <tr>
+    <th>Patient Name</th>
+    <th>Doctor Name</th>
+    <th>Appointment Date</th>
+    <th>Appointment Time</th>
+    <th>Reason</th>
+  </tr>
+  {% for appointment in appointments %}
+  <tr>
+    <td>{{ appointment.patient_name }}</td>
+    <td>{{ appointment.doctor_name }}</td>
+    <td>{{ appointment.appointment_date }}</td>
+    <td>{{ appointment.appointment_time }}</td>
+    <td>{{ appointment.reason }}</td>
+  </tr>
+  {% endfor %}
+</table>
+
+{% endblock %}
+
+<head>
+  <style>
+    table {
+      border-collapse: collapse;
+      width: 100%;
+    }
+
+    th, td {
+      text-align: left;
+      padding: 8px;
+    }
+
+    th {
+      background-color: #333;
+      color: white;
+    }
+
+    tr:nth-child(even) {
+      background-color: #f2f2f2;
+    }
+
+    a:link {
+      color: green;
+      background-color: transparent;
+      text-decoration: none;
+    }
+
+    a:visited {
+      color: rgb(10, 10, 10);
+      background-color: transparent;
+      text-decoration: none;
+    }
+
+    a:hover {
+      color: red;
+      background-color: transparent;
+      text-decoration: underline;
+    }
+
+    a:active {
+      color: yellow;
+      background-color: transparent;
+      text-decoration: underline;
+    }
+  </style>
+</head>

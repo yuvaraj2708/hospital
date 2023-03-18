@@ -1,0 +1,30 @@
+from django.urls import path
+from .views import *
+
+urlpatterns = [
+    path('', login_view, name='login'),
+    path('logout/',logout_view,name='logout'),
+    path('registration_form/', registration_form, name='registration_form'),
+    path('dashboard/', dashboard, name='dashboard'),
+    path('make_appointment/', make_appointment, name='make_appointment'),
+    path('registersummary/',registrationsummary,name="registersummary"),
+    path('opd_dashboard/',opd_dashboard,name="opd_dashboard"),
+    path('opd_details/',opd_details,name="opd_details"),
+    path('ipd_dashboard/',ipd_dashboard,name="ipd_dashboard"),
+    path('ipd_details/',ipd_details,name="ipd_details"),
+    path('update/<int:id>', update, name='update'),
+    path('update/updaterecord/<int:id>', updaterecord, name='updaterecord'),
+    path('patient_discharge/', patient_discharge, name='patient_discharge'),
+    path('discharge_summary/', discharge_summary, name='discharge_summary'),
+    path('download_discharge_summary/', download_discharge_summary, name='download_discharge_summary'),
+    path('death_entry/', death_entry, name='death_entry'),
+    path('death_entry/<int:pk>/edit/', edit_death_summary, name='edit_death_summary'),
+    path('death_entry/<int:pk>/delete/', delete_death_summary, name='delete_death_summary'),
+    path('death_entry/download/<int:id>/', download_death_summary, name='download_death_summary'),
+    path('emergency_dashboard/',emergency_dashboard,name="emergency_dashboard"),
+    path('emergency_details/',emergency_details,name="emergency_details"),
+    path('add_ot_schedule/', add_ot_schedule, name='add_ot_schedule'),
+    path('approve_ot_schedule/<int:pk>',approve_ot_schedule, name='approve_ot_schedule'),
+    path('schedule_ot/',schedule_ot,name='schedule_ot'),
+    path('filter_ot_schedule/', filter_ot_schedule, name='filter_ot_schedule'),
+]

@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block content %}
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+<table>
+  <thead>
+    <tr>
+      <th>Patient Name</th>
+      <th>Patient ID</th>
+      <th>Patient Age</th>
+      <th>Patient Gender</th>
+      <th>Patient Contact</th>
+      <th>Patient Date</th>
+      <!-- add other patient fields here as needed -->
+    </tr>
+  </thead>
+  <tbody>
+    {% for patient in opd_patients %}
+    <tr>
+      <td>{{ patient.name }}</td>
+      <td>{{ patient.id }}</td>
+      <td>{{ patient.age }}</td>
+      <td>{{ patient.gender }}</td>
+      <td>{{ patient.contact_info }}</td>
+      <td>{{ patient.Date }}</td>
+      <!-- add other patient fields here as needed -->
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endblock %}

@@ -1,0 +1,73 @@
+{% extends "base.html" %}
+
+{% block content %}
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+<h1>Patient Registration</h1>
+<div class="register-container">
+    <form method="post">
+        {% csrf_token %}
+        <div class="form-row">
+            <label for="name">Name:</label>
+            <input type="text" name="name">
+        </div>
+        <div class="form-row">
+            <label for="age">Age:</label>
+            <input type="number" name="age">
+        </div>
+        <div class="form-row">
+            <label for="gender">Gender:</label>
+            <input type="text" name="gender">
+        </div>
+        <div class="form-row">
+            <label for="contact_info">Contact Info:</label>
+            <input type="text" name="contact_info">
+        </div>
+        <div class="form-row">
+            <label for="patient_type">Patient Type:</label>
+            <select name="patient_type">
+                <option value="IPD">IPD</option>
+                <option value="OPD">OPD</option>
+                <option value="Emergency">Emergency</option>
+            </select>
+        </div>
+        <div class="form-row">
+            <label for="date">Date:</label>
+            <input type="date" name="date">
+        </div>
+        <!-- other relevant fields -->
+        <div class="form-row">
+            <input type="submit" value="Submit">
+        </div>
+    </form>
+</div>
+
+<style>
+    .register-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        grid-gap: 10px;
+    }
+
+    .form-row {
+        display: flex;
+        align-items: center;
+    }
+
+    .form-row label {
+        flex-basis: 100px;
+        text-align: right;
+        margin-right: 10px;
+    }
+
+    .form-row input,
+    .form-row select {
+        flex-grow: 1;
+        padding: 5px;
+        font-size: 16px;
+        border-radius: 5px;
+        border: 1px solid #ccc;
+    }
+</style>
+
+{% endblock %}

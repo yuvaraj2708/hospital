@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+
+{% block content %}
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+<form method="POST">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Submit</button>
+
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Patient Code</th>
+                <th>Patient Name</th>
+                <th>Death Date</th>
+                <th>Admission Number</th>
+                <th>Confirmation</th>
+                <th>Edit</th>
+                <th>Delete</th>
+                <th>Download</th>
+            </tr>
+        </thead>
+        <style>
+            a.edit-link {
+              color: blue;
+            }
+            a.delete-link {
+              color: red;
+            }
+            a.download-link {
+              color: green;
+            }
+            </style>
+            
+        <tbody>
+            {% for death_summarys in death_summary %}
+                <tr>
+                    <td>{{ death_summarys.patient_code }}</td>
+                    <td>{{ death_summarys.patient_name }}</td>
+                    <td>{{ death_summarys.death_date }}</td>
+                    <td>{{ death_summarys.admission_number }}</td>
+                    <td>{{ death_summarys.confirm }}</td>
+                  
+                    <td><a href="{% url 'edit_death_summary' death_summarys.id %}" class="edit-link">Edit</a></td>
+                    <td><a href="{% url 'delete_death_summary' death_summarys.id %}" class="delete-link">Delete</a></td>
+                    <td><a href="{% url 'download_death_summary' death_summarys.id %}" class="download-link">Download</a></td>
+                    </tr>
+            {% empty %}
+                <tr>
+                    <td colspan="8">No death summaries found.</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+</form>
+{% endblock %}

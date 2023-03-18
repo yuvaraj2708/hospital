@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <h1>Filter OT Schedule</h1>
+    <form method="POST" action="{% url 'filter_ot_schedule' %}">
+        {% csrf_token %}
+        <div class="form-group">
+            <label for="start_date">Start Date:</label>
+            <input type="date" id="start_date" name="start_date" class="form-control">
+        </div>
+        <div class="form-group">
+            <label for="end_date">End Date:</label>
+            <input type="date" id="end_date" name="end_date" class="form-control">
+        </div>
+        
+        
+        <button type="submit" class="btn btn-primary">Filter</button>
+    </form>
+
+    {% if schedules %}
+        <hr>
+        <h2>Filtered Schedules</h2>
+        <table class="table">
+            <thead>
+                <tr>
+                   
+                    <th>Patient Name</th>
+                    <th>UHID</th>
+                    <th>Speciality</th>
+                    <th>Doctor</th>
+                    <th>Start Date</th>
+                    <th>End Date</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for schedule in schedules %}
+                    <tr>
+                        
+                        <td>{{ schedule.patient_name }}</td>
+                        <td>{{ schedule.patient.uhid }}</td>
+                        <td>{{ schedule.speciality }}</td>
+                        <td>{{ schedule.doctor_name }}</td>
+                        <td>{{ schedule.start_date }}</td>
+                        <td>{{ schedule.end_date }}</td>
+                        <td>{{ schedule.status }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% endif %}
+{% endblock %}

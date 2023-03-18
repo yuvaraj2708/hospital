@@ -1,0 +1,153 @@
+
+
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>My Website</title>
+   <style>
+    header {
+    background-color: #333;
+    color: #fff;
+    padding: 20px;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+ul {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+li {
+    margin-right: 20px;
+}
+
+li:last-child {
+    margin-right: 0;
+}
+
+a {
+    color: #fff;
+    text-decoration: none;
+}
+
+.dropdown {
+    position: relative;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: #f9f9f9;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.dropdown-content a {
+    color: #333;
+    padding: 12px 16px;
+    display: block;
+}
+
+.dropdown-content a:hover {
+    background-color: #f1f1f1;
+}
+
+   </style>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+ 
+</head>
+<body>
+    
+    <header>
+        <nav>
+            <ul>
+                <li><a href="{% url 'dashboard' %}">Dashboard</a></li>
+                <li class="dropdown">
+                    <a href="#">Front Desk</a>
+                    <div class="dropdown-content">
+                        <a href="{% url 'registration_form' %}">Patient Registration</a>
+                        <a href="{% url 'make_appointment' %}">Patient Appointment</a>
+                        <a href="{% url 'registersummary' %}">Registration Summary</a>
+                    
+                    </div>
+                </li>
+                <li class="dropdown">
+                    <a href="#">OPD</a>
+                    <div class="dropdown-content">
+                        <a href="{% url 'opd_dashboard' %}">dashboard</a>
+                        <a href="{% url 'opd_details' %}">OPD details</a>
+                        </div>
+                </li>
+
+                 <li class="dropdown">
+                    <a href="#">IPD</a>
+                    <div class="dropdown-content">
+                        <a href="{% url 'ipd_dashboard' %}">dashboard</a>
+                        <a href="{% url 'ipd_details' %}">IPD details</a>
+                        <a href="{% url 'patient_discharge' %}">patient_discharge</a>
+                        <a href="{% url 'discharge_summary' %}">discharge_summary</a>
+                        <a href="{% url 'death_entry' %}">death_entry</a>
+                        
+
+
+                        </div>
+                </li>
+                <li class="dropdown">
+                    <a href="#">Emergency</a>
+                    <div class="dropdown-content">
+                        <a href="{% url 'emergency_dashboard' %}">dashboard</a>
+                        <a href="{% url 'emergency_details' %}">Emergency details</a>
+                        </div>
+                </li>
+
+
+            
+
+                 <li class="dropdown">
+                    <a href="#">OT</a>
+                    <div class="dropdown-content">
+                        <a href="{% url 'schedule_ot' %}">dashboard</a>
+                        <a href="{% url 'add_ot_schedule' %}">OT schedule</a>
+                        </div>
+                </li>
+            </ul>
+            <ul>
+               
+                {% if user.is_authenticated %}
+                    <li><a href="{% url 'logout' %}">Logout</a></li>
+                {% else %}
+                    <li><a href="{% url 'login' %}">Login</a></li>
+                {% endif %}
+            </ul>
+        </nav>
+    </header>
+    <main>
+        {% block styles %}
+        {% endblock %}
+        {% block content %}
+        {% endblock %}
+    </main>
+    <footer>
+        <p>&copy; 2023 Margytech</p>
+    </footer>
+</body>
+</html>
+

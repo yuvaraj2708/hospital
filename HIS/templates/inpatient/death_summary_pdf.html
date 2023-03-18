@@ -1,0 +1,67 @@
+{% extends "base.html" %}
+
+{% block content %}
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>{{ death_summary.patient_code }} Death Summary</title>
+    <style>
+        /* CSS styling for the PDF */
+        body {
+            font-family: Arial, sans-serif;
+            font-size: 12px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 15px;
+        }
+        th, td {
+            text-align: left;
+            padding: 8px;
+            border-bottom: 1px solid #ddd;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        h1, h2 {
+            text-align: center;
+            margin-bottom: 0;
+        }
+        h2 {
+            font-size: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>{{ death_summary.patient_code }} Death Summary</h1>
+    <hr>
+    <table>
+        <tr>
+            <th>Patient Code:</th>
+            <td>{{ death_summary.patient_code }}</td>
+        </tr>
+        <tr>
+            <th>Patient Name:</th>
+            <td>{{ death_summary.patient_name }}</td>
+        </tr>
+        <tr>
+            <th>Death Date:</th>
+            <td>{{ death_summary.death_date }}</td>
+        </tr>
+        <tr>
+            <th>Admission Number:</th>
+            <td>{{ death_summary.admission_no }}</td>
+        </tr>
+        <tr>
+            <th>Confirm:</th>
+            <td>{{ death_summary.confirm }}</td>
+        </tr>
+    </table>
+    <h2>Additional Information:</h2>
+    </body>
+</html>
+{% endblock %}

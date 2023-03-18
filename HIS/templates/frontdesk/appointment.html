@@ -1,0 +1,105 @@
+{% extends "base.html" %}
+
+{% block content %}
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+  <h1>Appointment Form</h1>
+  <form method="post">
+    {% csrf_token %}
+    <div class="form-group row">
+      <tr>
+        <td><label class="col-md-4 col-form-label" for="{{ form.patient_name.id_for_label }}">Patient Name:</label>
+      <div class="col-md-8">{{ form.patient_name }}</div></td>
+   </tr>
+   
+      <label class="col-md-4 col-form-label" for="{{ form.doctor_name.id_for_label }}">Doctor Name:</label>
+      <div class="col-md-8">{{ form.doctor_name }}</div>
+    </div>
+    <div class="form-group row">
+      <label class="col-md-4 col-form-label" for="{{ form.appointment_date.id_for_label }}">Appointment Date:</label>
+      <div class="col-md-8">{{ form.appointment_date }}</div>
+    </div>
+    <div class="form-group row">
+      <label class="col-md-4 col-form-label" for="{{ form.appointment_time.id_for_label }}">Appointment Time:</label>
+      <div class="col-md-8">{{ form.appointment_time }}</div>
+    </div>
+    <div class="form-group row">
+      <label class="col-md-4 col-form-label" for="{{ form.reason.id_for_label }}">Reason:</label>
+      <div class="col-md-8">{{ form.reason }}</div>
+    </div>
+    <div class="form-group row">
+      <div class="col-md-4"></div>
+      <div class="col-md-8">
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </div>
+    </div>
+  </form>
+
+  <h2>Appointments:</h2>
+
+  {% for appointment in appointments %}
+      <p>{{ appointment.patient_name }} - {{ appointment.doctor_name }} - {{ appointment.appointment_date }}</p>
+  {% empty %}
+      <p>No appointments scheduled.</p>
+  {% endfor %}
+{% endblock %}
+
+<div class="row">
+  <div class="col">
+    <table class="table">
+      <tr>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
+      </tr>
+      <tr>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
+      </tr>
+      <tr>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
+      </tr>
+    </table>
+  </div>
+  <div class="col">
+    <table class="table">
+      <tr>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
+      </tr>
+      <tr>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
+      </tr>
+      <tr>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
+      </tr>
+    </table>
+  </div>
+  <div class="col">
+    <table class="table">
+      <tr>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
+      </tr>
+      <tr>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
+      </tr>
+      <tr>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
+      </tr>
+    </table>
+  </div>
+</div>

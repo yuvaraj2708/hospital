@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+{% block styles %}
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+<style>
+    .big-box {
+        padding: 80px;
+    }
+</style>
+{% endblock %}
+{% block content %}
+<div class="container">
+  <h1 class="mt-5">Dashboard</h1>
+
+  <div class="row"> 
+    <div class="col-md-3">
+      <div class="card mb-4">
+        <div class="card-body text-center">
+          <h5 class="card-title">IPD</h5>
+          <p class="card-text">{{ ipd_count }}</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-3">
+      <div class="card mb-4">
+        <div class="card-body text-center">
+          <h5 class="card-title">OPD</h5>
+          <p class="card-text">{{ opd_count }}</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-3">
+      <div class="card mb-4">
+        <div class="card-body text-center">
+          <h5 class="card-title">Emergency</h5>
+          <p class="card-text">{{ emergency_count }}</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-3">
+      <div class="card mb-4">
+        <div class="card-body text-center">
+          <h5 class="card-title">Total</h5>
+          <p class="card-text">{{ total_count }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <a href="/make_appointment" class="btn btn-primary">Make Appointment</a>
+</div>
+{% endblock %}
